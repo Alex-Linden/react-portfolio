@@ -1,6 +1,16 @@
 import { useState } from 'react';
 import './App.css';
-import profilePic from './assets/img/profilePic.jpeg'
+import {
+  AvatarPic,
+  ReactNative,
+  jobly_company_list,
+  jobly_home_page,
+  tags_admin_page,
+  tags_on_page,
+  tags_search_example,
+  Warbler_home_page,
+  Warbler_landing_page,
+} from './assets';
 
 function App() {
 
@@ -32,7 +42,7 @@ function App() {
       <header class="masthead bg-primary text-white text-center">
         <div class="container d-flex align-items-center flex-column">
           {/* <!-- Masthead Avatar Image--> */}
-          <img class="masthead-avatar mb-5" src={profilePic} alt="..." />
+          <img class="masthead-avatar mb-5" src={AvatarPic} alt="..." />
           {/* <!-- Masthead Heading--> */}
           <h1 class="masthead-heading text-uppercase mb-0">Alex Linden</h1>
           {/* <!-- Icon Divider--> */}
