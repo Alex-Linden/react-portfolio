@@ -11,6 +11,7 @@ import {
   Warbler_home_page,
   Warbler_landing_page,
 } from './assets';
+import ProjectGrid from './ProjectGrid';
 
 function App() {
 
@@ -56,6 +57,7 @@ function App() {
         </div>
       </header>
       {/* <!-- Portfolio Section--> */}
+          <ProjectGrid />
       <section className="page-section portfolio" id="portfolio">
         <div className="container">
           {/* <!-- Portfolio Section Heading--> */}
