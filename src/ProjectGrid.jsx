@@ -13,7 +13,8 @@ import {
     Container,
     Modal,
     Box,
-    CardHeader
+    CardHeader,
+    Link
 } from "@mui/material";
 // import CssBaseline from '@mui/material/CssBaseline';
 // import Stack from '@mui/material/Stack';
@@ -50,34 +51,66 @@ function ProjectGrid() {
         setSelectedCard(curCard);
         setOpen(true);
     };
-    const handleClose = () =>{
-        setSelectedCard(null)
+    const handleClose = () => {
+        setSelectedCard(null);
         setOpen(false);
-    }
+    };
     let cards = [
         {
             title: "Rithm SIS Mobile app",
             image: ReactNative,
             shortSummary: "Mobile app built with React Native",
-            media: []
+            media: [],
+            longSummary: `<li>Designed serializer in Django application to return clean data for API call</li>
+            <li>React-Native App</li>
+            <li>Implemented Stack navigation nested inside of tab navigation</li>
+            <li>Uses authentication </li>`,
+            links: [{ text: "Github", url: "https://github.com/Alex-Linden/react-native-mobile-sis" }]
         },
         {
             title: "Jobly",
             image: jobly_home_page,
             shortSummary: "Job listing search site built with React, Express, Node.js and PostgreSQL",
-            media: [jobly_company_list]
+            media: [jobly_company_list],
+            longSummary: ` <li>Built job application and search site using React for frontend,
+            Express and PostgreSQL as backend</li>
+          <li>Express backend devised with full Test Driven Development cycle,
+            maintaining 100% test coverage</li>
+          <li>Designed and implemented component hierarchy for React frontend</li>
+          <li>Utilized user token authentication combined with state and
+            context hooks alongside local storage to enhance user experience</li>
+          <li>Implemented live search using debounce with the Lodash library </li>`,
+            links: [
+                { text: "Demo", url: "https://wry-dolls.surge.sh/" },
+                { text: "Github frontend", url: "https://github.com/Alex-Linden/react-jobly" },
+                { text: "Github backend", url: "https://github.com/Alex-Linden/express-jobly" }]
         },
         {
             title: "Warbler",
             image: Warbler_landing_page,
             shortSummary: "Twitter clone built with Flask",
-            media: [Warbler_home_page]
+            media: [Warbler_home_page],
+            longSummary: `<li>Engineered Twitter clone platform utilizing Python, Flask, PostgreSQL,
+            and SQLAlchemy</li>
+          <li>Added user authentication/authorization to RESTful API routes
+            utilizing Bcrypt password hashing</li>
+          <li>Managed many-to-many database relationships
+            with Python ORM SQLAlchemy</li>`,
+            links: [{ text: "Demo", url: "https://r26-alex-warbler.herokuapp.com/" }, { text: "Github", url: "https://github.com/Alex-Linden/Flask-warbler" }]
         },
         {
             title: "Rithm SIS Tags",
             image: tags_search_example,
             shortSummary: "Tagging feature built in Django to improve search",
-            media: [tags_admin_page, tags_on_page]
+            media: [tags_admin_page, tags_on_page],
+            longSummary: `<li>Built a Tags feature in Django on SIS,
+            allowing students and personnel to search for specific tags across 4 unique
+            applications,
+            tracking usage rate, while maintaining 100% test coverage</li>
+          <li>Developed 2 new data models and added relationships to 4 existing data models.
+            Incorporated tags into Watson search indexing, integrating add,
+            edit and delete functionality to SIS administration for staff</li>`,
+            links: [{ text: "Private Repo", url: null }]
         }
     ];
 
@@ -92,7 +125,7 @@ function ProjectGrid() {
                         <Card
                             sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                         >
-                            <CardActionArea onClick={()=>handleOpen(card)}>
+                            <CardActionArea onClick={() => handleOpen(card)}>
                                 <CardMedia
                                     component="div"
                                     sx={{
@@ -125,16 +158,27 @@ function ProjectGrid() {
                     <Card >
                         <CardHeader title={selectedCard?.title} />
                         {selectedCard?.media[0] &&
-                        <CardMedia
-                        component="img"
-                        height="194"
-                        image={selectedCard.media[0]}
-                        alt="Paella dish"
-                      />}
+                            <CardMedia
+                                component="img"
+                                height="194"
+                                image={selectedCard.media[0]}
+                                alt="Paella dish"
+                            />}
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        </Typography>
+                        <CardActions>
+                            {selectedCard?.links.map((link) => (
+                                <Link
+                                    key={`${selectedCard.title}-${link.text}`}
+                                    href={link.url}
+                                    underline="hover"
+                                    target="_blank"
+                                    rel="noopener"
+                                >{link.text}</Link>
+                            ))}
+                        </CardActions>
                     </Card>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </Typography>
                 </Box>
             </Modal>
         </Container>
