@@ -16,6 +16,7 @@ import {
     CardHeader,
     Link
 } from "@mui/material";
+import StarIcon from '@mui/icons-material/Star';
 // import CssBaseline from '@mui/material/CssBaseline';
 // import Stack from '@mui/material/Stack';
 // import Box from '@mui/material/Box';
@@ -116,72 +117,85 @@ function ProjectGrid() {
 
 
     return (
+        <main>
+            <Box>
 
-        <Container sx={{ py: 8 }} maxWidth="md">
-            {/* End hero unit */}
-            <Grid container spacing={4}>
-                {cards.map((card) => (
-                    <Grid item key={card.title} xs={12} sm={6} md={4}>
-                        <Card
-                            sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                        >
-                            <CardActionArea onClick={() => handleOpen(card)}>
+                <h2 className="page-section-heading text-center text-uppercase text-secondary mb-0">Projects</h2>
+                {/* <!-- Icon Divider--> */}
+                <div className="divider-custom">
+                    <div className="divider-custom-line"></div>
+                    <div className="divider-custom-icon"><StarIcon /></div>
+                    <div className="divider-custom-line"></div>
+                </div>
+            </Box>
+
+
+            <Container sx={{ py: 8 }} maxWidth="md">
+                {/* End hero unit */}
+                <Grid container spacing={4}>
+                    {cards.map((card) => (
+                        <Grid item key={card.title} xs={12} sm={6} md={4}>
+                            <Card
+                                sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                            >
+                                <CardActionArea onClick={() => handleOpen(card)}>
+                                    <CardMedia
+                                        component="div"
+                                        sx={{
+                                            // 16:9
+                                            pt: '56.25%',
+                                        }}
+                                        image={card.image}
+                                    />
+                                    <CardContent sx={{ flexGrow: 1 }}>
+                                        <Typography gutterBottom variant="h5" component="h2">
+                                            {card.title}
+                                        </Typography>
+                                        <Typography>
+                                            {card.shortSummary}
+                                        </Typography>
+                                    </CardContent>
+
+                                </CardActionArea>
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={style}>
+                        <Card >
+                            <CardHeader title={selectedCard?.title} />
+                            {selectedCard?.media[0] &&
                                 <CardMedia
-                                    component="div"
-                                    sx={{
-                                        // 16:9
-                                        pt: '56.25%',
-                                    }}
-                                    image={card.image}
-                                />
-                                <CardContent sx={{ flexGrow: 1 }}>
-                                    <Typography gutterBottom variant="h5" component="h2">
-                                        {card.title}
-                                    </Typography>
-                                    <Typography>
-                                        {card.shortSummary}
-                                    </Typography>
-                                </CardContent>
-
-                            </CardActionArea>
+                                    component="img"
+                                    height="194"
+                                    image={selectedCard.media[0]}
+                                    alt="Paella dish"
+                                />}
+                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                            </Typography>
+                            <CardActions>
+                                {selectedCard?.links.map((link) => (
+                                    <Link
+                                        key={`${selectedCard.title}-${link.text}`}
+                                        href={link.url}
+                                        underline="hover"
+                                        target="_blank"
+                                        rel="noopener"
+                                    >{link.text}</Link>
+                                ))}
+                            </CardActions>
                         </Card>
-                    </Grid>
-                ))}
-            </Grid>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <Card >
-                        <CardHeader title={selectedCard?.title} />
-                        {selectedCard?.media[0] &&
-                            <CardMedia
-                                component="img"
-                                height="194"
-                                image={selectedCard.media[0]}
-                                alt="Paella dish"
-                            />}
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                        </Typography>
-                        <CardActions>
-                            {selectedCard?.links.map((link) => (
-                                <Link
-                                    key={`${selectedCard.title}-${link.text}`}
-                                    href={link.url}
-                                    underline="hover"
-                                    target="_blank"
-                                    rel="noopener"
-                                >{link.text}</Link>
-                            ))}
-                        </CardActions>
-                    </Card>
-                </Box>
-            </Modal>
-        </Container>
+                    </Box>
+                </Modal>
+            </Container>
+        </main>
     );
 
 }
