@@ -75,14 +75,13 @@ function ProjectGrid() {
             image: jobly_home_page,
             shortSummary: "Job listing search site built with React, Express, Node.js and PostgreSQL",
             media: [jobly_company_list],
-            longSummary: ` <li>Built job application and search site using React for frontend,
-            Express and PostgreSQL as backend</li>
-          <li>Express backend devised with full Test Driven Development cycle,
-            maintaining 100% test coverage</li>
-          <li>Designed and implemented component hierarchy for React frontend</li>
-          <li>Utilized user token authentication combined with state and
-            context hooks alongside local storage to enhance user experience</li>
-          <li>Implemented live search using debounce with the Lodash library </li>`,
+            longSummary: [
+                'Built job application and search site using React for frontend,Express and PostgreSQL as backend',
+                'Express backend devised with full Test Driven Development cycle,maintaining 100% test coverage',
+                'Designed and implemented component hierarchy for React frontend',
+                'Utilized user token authentication combined with state and context hooks alongside local storage to enhance user experience',
+                'Implemented live search using debounce with the Lodash library',
+            ],
             links: [
                 { text: "Demo", url: "https://wry-dolls.surge.sh/" },
                 { text: "Github frontend", url: "https://github.com/Alex-Linden/react-jobly" },
@@ -93,12 +92,11 @@ function ProjectGrid() {
             image: Warbler_landing_page,
             shortSummary: "Twitter clone built with Flask",
             media: [Warbler_home_page],
-            longSummary: `<li>Engineered Twitter clone platform utilizing Python, Flask, PostgreSQL,
-            and SQLAlchemy</li>
-          <li>Added user authentication/authorization to RESTful API routes
-            utilizing Bcrypt password hashing</li>
-          <li>Managed many-to-many database relationships
-            with Python ORM SQLAlchemy</li>`,
+            longSummary: [
+                'Engineered Twitter clone platform utilizing Python, Flask, PostgreSQL, and SQLAlchemy',
+                'Added user authentication/authorization to RESTful API routes utilizing Bcrypt password hashing',
+                'Managed many-to-many database relationships with Python ORM SQLAlchemy',
+            ],
             links: [{ text: "Demo", url: "https://r26-alex-warbler.herokuapp.com/" }, { text: "Github", url: "https://github.com/Alex-Linden/Flask-warbler" }]
         },
         {
@@ -106,13 +104,14 @@ function ProjectGrid() {
             image: tags_search_example,
             shortSummary: "Tagging feature built in Django to improve search",
             media: [tags_admin_page, tags_on_page],
-            longSummary: `<li>Built a Tags feature in Django on SIS,
-            allowing students and personnel to search for specific tags across 4 unique
+            longSummary: [
+            `Built a Tags feature in Django on SIS, allowing students and personnel to search for specific tags across 4 unique
             applications,
-            tracking usage rate, while maintaining 100% test coverage</li>
-          <li>Developed 2 new data models and added relationships to 4 existing data models.
+            tracking usage rate, while maintaining 100% test coverage`,
+          `Developed 2 new data models and added relationships to 4 existing data models.
             Incorporated tags into Watson search indexing, integrating add,
-            edit and delete functionality to SIS administration for staff</li>`,
+            edit and delete functionality to SIS administration for staff`,
+            ],
             links: [{ text: "Private Repo", url: null }]
         }
     ];
@@ -185,14 +184,14 @@ function ProjectGrid() {
                                     image={selectedCard.media[0]}
                                     alt="Paella dish"
                                 />}
-                                <ul>
+                            <ul>
 
-                            {selectedCard?.longSummary.map((line, idx) => (
+                                {selectedCard?.longSummary.map((line, idx) => (
 
-                                <Typography key={idx} id="modal-modal-description" sx={{ mt: 2 }}>
-                                    {line}
-                                </Typography>
-                            ))}
+                                    <Typography key={idx} id="modal-modal-description" sx={{ mt: 2 }}>
+                                        {line}
+                                    </Typography>
+                                ))}
                             </ul>
                             <CardActions>
                                 {selectedCard?.links.map((link) => (
