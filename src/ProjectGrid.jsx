@@ -14,7 +14,8 @@ import {
     Modal,
     Box,
     CardHeader,
-    Link
+    Link,
+    Divider
 } from "@mui/material";
 import StarIcon from '@mui/icons-material/Star';
 // import CssBaseline from '@mui/material/CssBaseline';
@@ -62,10 +63,11 @@ function ProjectGrid() {
             image: ReactNative,
             shortSummary: "Mobile app built with React Native",
             media: [],
-            longSummary: `<li>Designed serializer in Django application to return clean data for API call</li>
-            <li>React-Native App</li>
-            <li>Implemented Stack navigation nested inside of tab navigation</li>
-            <li>Uses authentication </li>`,
+            longSummary: [
+                'Designed serializer in Django application to return clean data for API call',
+                'React-Native App',
+                'Implemented Stack navigation nested inside of tab navigation',
+                'Uses authentication'],
             links: [{ text: "Github", url: "https://github.com/Alex-Linden/react-native-mobile-sis" }]
         },
         {
@@ -118,18 +120,24 @@ function ProjectGrid() {
 
     return (
         <main>
-            <Box>
-
-                <h2 className="page-section-heading text-center text-uppercase text-secondary mb-0">Projects</h2>
-                {/* <!-- Icon Divider--> */}
-                <div className="divider-custom">
-                    <div className="divider-custom-line"></div>
-                    <div className="divider-custom-icon"><StarIcon /></div>
-                    <div className="divider-custom-line"></div>
-                </div>
+            <Box
+                sx={{
+                    bgcolor: 'background.paper',
+                    pt: 4,
+                }}
+            >
+                <Container maxWidth="sm">
+                    <Typography
+                        component="h1"
+                        variant="h2"
+                        align="center"
+                        color="text.primary"
+                    >
+                        Projects
+                    </Typography>
+                    <Divider role="presentation"><StarIcon /></Divider>
+                </Container>
             </Box>
-
-
             <Container sx={{ py: 8 }} maxWidth="md">
                 {/* End hero unit */}
                 <Grid container spacing={4}>
@@ -177,9 +185,15 @@ function ProjectGrid() {
                                     image={selectedCard.media[0]}
                                     alt="Paella dish"
                                 />}
-                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                            </Typography>
+                                <ul>
+
+                            {selectedCard?.longSummary.map((line, idx) => (
+
+                                <Typography key={idx} id="modal-modal-description" sx={{ mt: 2 }}>
+                                    {line}
+                                </Typography>
+                            ))}
+                            </ul>
                             <CardActions>
                                 {selectedCard?.links.map((link) => (
                                     <Link
