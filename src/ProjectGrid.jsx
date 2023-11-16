@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 // import AppBar from '@mui/material/AppBar';
 // import CameraIcon from '@mui/icons-material/PhotoCamera';
 import {
     CardActionArea,
     Card,
     CardActions,
-    Button,
     CardContent,
     CardMedia,
     Grid,
@@ -15,7 +14,12 @@ import {
     Box,
     CardHeader,
     Link,
-    Divider
+    Divider,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
 } from "@mui/material";
 import StarIcon from '@mui/icons-material/Star';
 // import CssBaseline from '@mui/material/CssBaseline';
@@ -39,24 +43,60 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    maxWidth: '100%',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
 };
 
+// const styles = theme => ({
+//     modal:{
+//       position:'absolute',
+//       top:'50%',
+//       left:'50%',
+//       transform: 'translate(-50%, -50%)',
+//       overflow:'hidden',
+//       height:'100%',
+//       maxHeight: 500,
+//       maxWidth: '80%'
+//       display:'block'
+//     },
+//     header: {
+//       padding: '12px 0',
+//       borderBottom: '1px solid darkgrey'
+//     },
+//     content: {
+//       padding: 12,
+//       overflow: 'scroll'
+//     }
+//   });
+
 function ProjectGrid() {
     const [selectedCard, setSelectedCard] = useState(null);
     const [open, setOpen] = useState(false);
+    const [scroll, setScroll] = useState('paper');
+
     const handleOpen = (curCard) => {
         setSelectedCard(curCard);
         setOpen(true);
     };
+
     const handleClose = () => {
         setSelectedCard(null);
         setOpen(false);
     };
+
+    const descriptionElementRef = useRef(null);
+    useEffect(() => {
+        if (open) {
+            const { current: descriptionElement } = descriptionElementRef;
+            if (descriptionElement !== null) {
+                descriptionElement.focus();
+            }
+        }
+    }, [open]);
+
     let cards = [
         {
             title: "Rithm SIS Mobile app",
@@ -105,10 +145,10 @@ function ProjectGrid() {
             shortSummary: "Tagging feature built in Django to improve search",
             media: [tags_admin_page, tags_on_page],
             longSummary: [
-            `Built a Tags feature in Django on SIS, allowing students and personnel to search for specific tags across 4 unique
+                `Built a Tags feature in Django on SIS, allowing students and personnel to search for specific tags across 4 unique
             applications,
             tracking usage rate, while maintaining 100% test coverage`,
-          `Developed 2 new data models and added relationships to 4 existing data models.
+                `Developed 2 new data models and added relationships to 4 existing data models.
             Incorporated tags into Watson search indexing, integrating add,
             edit and delete functionality to SIS administration for staff`,
             ],
@@ -168,47 +208,54 @@ function ProjectGrid() {
                         </Grid>
                     ))}
                 </Grid>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                    <Box sx={style}>
-                        <Card >
-                            <CardHeader title={selectedCard?.title} />
-                            {selectedCard?.media[0] &&
-                                <CardMedia
-                                    component="img"
-                                    height="194"
-                                    image={selectedCard.media[0]}
-                                    alt="Paella dish"
-                                />}
-                            <ul>
-
-                                {selectedCard?.longSummary.map((line, idx) => (
-
-                                    <Typography key={idx} id="modal-modal-description" sx={{ mt: 2 }}>
-                                        {line}
-                                    </Typography>
-                                ))}
-                            </ul>
-                            <CardActions>
-                                {selectedCard?.links.map((link) => (
-                                    <Link
-                                        key={`${selectedCard.title}-${link.text}`}
-                                        href={link.url}
-                                        underline="hover"
-                                        target="_blank"
-                                        rel="noopener"
-                                    >{link.text}</Link>
-                                ))}
-                            </CardActions>
-                        </Card>
-                    </Box>
-                </Modal>
             </Container>
-        </main>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                scroll={scroll}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <DialogTitle id="scroll-dialog-title">{selectedCard?.title}</DialogTitle>
+                <DialogContent dividers={scroll === 'paper'}>
+                    {selectedCard?.media[0] &&
+                        <DialogContent>
+                            <CardMedia
+                                component="img"
+                                height="194"
+                                image={selectedCard.media[0]}
+                                alt="Paella dish"
+                            />
+                        </DialogContent>}
+                    <DialogContentText
+                        id="scroll-dialog-description"
+                        ref={descriptionElementRef}
+                        tabIndex={-1}
+                    >
+                        <ul>
+
+                            {selectedCard?.longSummary.map((line, idx) => (
+
+                                <Typography key={idx} id="modal-modal-description" sx={{ mt: 2 }}>
+                                    {line}
+                                </Typography>
+                            ))}
+                        </ul>
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    {selectedCard?.links.map((link) => (
+                        <Link
+                            key={`${selectedCard.title}-${link.text}`}
+                            href={link.url}
+                            underline="hover"
+                            target="_blank"
+                            rel="noopener"
+                        >{link.text}</Link>
+                    ))}
+                </DialogActions>
+            </Dialog >
+        </main >
     );
 
 }
