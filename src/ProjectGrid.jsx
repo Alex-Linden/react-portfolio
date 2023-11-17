@@ -10,9 +10,7 @@ import {
     Grid,
     Typography,
     Container,
-    Modal,
     Box,
-    CardHeader,
     Link,
     Divider,
     Dialog,
@@ -36,6 +34,9 @@ import {
     tags_search_example,
     Warbler_home_page,
     Warbler_landing_page,
+    kinfolx_landing,
+    kinfolx_after,
+    kinfolx_before,
 } from './assets';
 
 const style = {
@@ -49,28 +50,6 @@ const style = {
     boxShadow: 24,
     p: 4,
 };
-
-// const styles = theme => ({
-//     modal:{
-//       position:'absolute',
-//       top:'50%',
-//       left:'50%',
-//       transform: 'translate(-50%, -50%)',
-//       overflow:'hidden',
-//       height:'100%',
-//       maxHeight: 500,
-//       maxWidth: '80%'
-//       display:'block'
-//     },
-//     header: {
-//       padding: '12px 0',
-//       borderBottom: '1px solid darkgrey'
-//     },
-//     content: {
-//       padding: 12,
-//       overflow: 'scroll'
-//     }
-//   });
 
 function ProjectGrid() {
     const [selectedCard, setSelectedCard] = useState(null);
@@ -99,10 +78,29 @@ function ProjectGrid() {
 
     let cards = [
         {
+            title: "Kinfolx",
+            image: kinfolx_landing,
+            shortSummary: "Rebuilt website for local coffee shop to improve key metrics and usability",
+            media: [kinfolx_after, kinfolx_before],
+            longSummary: [
+                'Built using React',
+                'Refactored website for local restaurant to improve usability',
+                'Improved load times from several seconds to under a second via code splitting, image compression and lazy loading',
+                'Improved lighthouse accessability score to 100',
+                'Fixed broken links to menus and social media accounts',
+                'Disclaimer: due to Kinfolx losing contact with previous developer deployment is on hold'],
+            links: [
+                { text: "Github", url: "https://github.com/Alex-Linden/react-jobly" },
+                { text: "New Site", url: "https://kinfolx.onrender.com/" },
+                { text: "Original Site", url: "https://kinfolxoak.com/" },
+            ]
+        },
+        {
             title: "Rithm SIS Mobile app",
             image: ReactNative,
             shortSummary: "Mobile app built with React Native",
             media: [],
+            video: true,
             longSummary: [
                 'Designed serializer in Django application to return clean data for API call',
                 'React-Native App',
@@ -167,12 +165,12 @@ function ProjectGrid() {
             >
                 <Container maxWidth="sm">
                     <Typography
-                        component="h1"
-                        variant="h2"
+                        component="h2"
+                        variant="h3"
                         align="center"
                         color="text.primary"
                     >
-                        Projects
+                        PROJECTS
                     </Typography>
                     <Divider role="presentation"><StarIcon /></Divider>
                 </Container>
@@ -220,13 +218,33 @@ function ProjectGrid() {
                 <DialogContent dividers={scroll === 'paper'}>
                     {selectedCard?.media[0] &&
                         <DialogContent>
-                            <CardMedia
+                            {selectedCard.media.map((img, idx) => (
+                                <CardMedia
+                                key={`${selectedCard.title}-image-${idx}`}
                                 component="img"
                                 height="194"
-                                image={selectedCard.media[0]}
-                                alt="Paella dish"
+                                image={img}
+                                alt={`${selectedCard.title}-image-${idx}`}
+                                sx={{objectPosition: '0% 0%', pb:1}}
                             />
+                            ))}
+
                         </DialogContent>}
+                    {selectedCard?.video &&
+                        <DialogContent
+                        align="center">
+                            <iframe
+                                width="315"
+                                height="560"
+                                src="https://youtube.com/embed/jQzYFQ0SgSU"
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media;gyroscope; picture-in-picture;web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </DialogContent>
+
+                    }
                     <DialogContentText
                         id="scroll-dialog-description"
                         ref={descriptionElementRef}

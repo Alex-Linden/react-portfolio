@@ -8,7 +8,7 @@ function Hero() {
     return (
         <Box>
             <Card>
-                <CardMedia image={AvatarPic} />
+                <CardMedia />
             </Card>
         </Box>
     );
