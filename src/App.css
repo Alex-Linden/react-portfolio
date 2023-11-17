@@ -78,6 +78,7 @@
 
 body {
   margin: 0;
+  width: 100%;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
@@ -3932,13 +3933,13 @@ textarea.form-control-lg {
   border-top-right-radius: 0;
 }
 
-.nav {
+/* .nav {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-}
+} */
 
 .nav-link {
   display: block;
@@ -9318,7 +9319,7 @@ textarea.form-control-lg {
   }
 
   .d-lg-flex {
-    display: flex !important;
+    display: none !important;
   }
 
   .d-lg-inline-flex {
@@ -9969,7 +9970,7 @@ textarea.form-control-lg {
   }
 
   .d-xl-flex {
-    display: flex !important;
+    display: none !important;
   }
 
   .d-xl-inline-flex {
@@ -10620,7 +10621,7 @@ textarea.form-control-lg {
   }
 
   .d-xxl-flex {
-    display: flex !important;
+    display: none !important;
   }
 
   .d-xxl-inline-flex {
@@ -11276,7 +11277,7 @@ textarea.form-control-lg {
   }
 
   .d-print-flex {
-    display: flex !important;
+    display: none !important;
   }
 
   .d-print-inline-flex {
@@ -11309,7 +11310,7 @@ html {
 .divider-custom {
   margin: 1.25rem 0 1.5rem;
   width: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }

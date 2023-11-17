@@ -3,11 +3,12 @@ import './App.css';
 import { AvatarPic } from './assets';
 import ProjectGrid from './ProjectGrid';
 import NavBar from './Navbar';
+import Hero from './Hero';
 
 function App() {
 
   return (
-    <>
+    <div>
     <NavBar />
       {/* <!-- Navigation--> */}
       {/* <nav className="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
@@ -150,7 +151,7 @@ function App() {
       {/* <!-- Core theme JS--> */}
       <script src="js/scripts.js"></script>
 
-    </>
+    </div>
   );
 }
 
