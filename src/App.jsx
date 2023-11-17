@@ -1,24 +1,16 @@
 import { useState } from 'react';
 import './App.css';
-import {
-  AvatarPic,
-  ReactNative,
-  jobly_company_list,
-  jobly_home_page,
-  tags_admin_page,
-  tags_on_page,
-  tags_search_example,
-  Warbler_home_page,
-  Warbler_landing_page,
-} from './assets';
+import { AvatarPic } from './assets';
 import ProjectGrid from './ProjectGrid';
+import NavBar from './Navbar';
 
 function App() {
 
   return (
     <>
+    <NavBar />
       {/* <!-- Navigation--> */}
-      <nav className="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+      {/* <nav className="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div className="container">
           <a className="navbar-brand" href="#page-top">Alex Linden</a>
           <button className="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
@@ -30,7 +22,7 @@ function App() {
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
-                href="#portfolio">Projects</a></li>
+                href="#projects">Projects</a></li>
               <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
                 href="#about">About</a></li>
               <li className="nav-item mx-0 mx-lg-1"><a className="nav-link py-3 px-0 px-lg-3 rounded"
@@ -38,9 +30,9 @@ function App() {
             </ul>
           </div>
         </div>
-      </nav>
+      </nav> */}
       {/* <!-- Masthead--> */}
-      <header className="masthead bg-primary text-white text-center">
+      <header className="masthead bg-primary text-white text-center" id='top'>
         <div className="container d-flex align-items-center flex-column">
           {/* <!-- Masthead Avatar Image--> */}
           <img className="masthead-avatar mb-5" src={AvatarPic} alt="..." />
@@ -57,7 +49,9 @@ function App() {
         </div>
       </header>
       {/* <!-- Portfolio Section--> */}
-          <ProjectGrid />
+      <section id="projects" >
+      <ProjectGrid />
+      </section>
       {/* <!-- About Section--> */}
       <section className="page-section bg-primary text-white mb-0" id="about">
         <div className="container">
