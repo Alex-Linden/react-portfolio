@@ -3,7 +3,6 @@ import './App.css';
 import { AvatarPic } from './assets';
 import ProjectGrid from './ProjectGrid';
 import NavBar from './Navbar';
-import Hero from './Hero';
 import { Container, Divider, Typography, Link } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
