@@ -108,6 +108,7 @@ function ProjectGrid() {
                 'Uses authentication'],
             links: [{ text: "Github", url: "https://github.com/Alex-Linden/react-native-mobile-sis" }]
         },
+
         {
             title: "Jobly",
             image: jobly_home_page,
