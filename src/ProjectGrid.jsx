@@ -91,7 +91,7 @@ function ProjectGrid() {
                 'Disclaimer: due to Kinfolx losing contact with previous developer deployment is on hold'],
             links: [
                 { text: "Github", url: "https://github.com/Alex-Linden/react-jobly" },
-                { text: "New Site", url: "https://kinfolx.onrender.com/" },
+                { text: "New Site", url: "https://www.kinfolxoakland.com/" },
                 { text: "Original Site", url: "https://kinfolxoak.com/" },
             ]
         },
