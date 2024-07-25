@@ -90,9 +90,7 @@ function ProjectGrid() {
                 'Fixed broken links to menus and social media accounts',
                 'Disclaimer: due to Kinfolx losing contact with previous developer deployment is on hold'],
             links: [
-                { text: "Github", url: "https://github.com/Alex-Linden/react-jobly" },
-                { text: "New Site", url: "https://www.kinfolxoakland.com/" },
-                { text: "Original Site", url: "https://kinfolxoak.com/" },
+                { text: "Github", url: "https://github.com/Alex-Linden/kinfolx" },
             ]
         },
         {
@@ -122,7 +120,7 @@ function ProjectGrid() {
                 'Implemented live search using debounce with the Lodash library',
             ],
             links: [
-                { text: "Demo", url: "https://wry-dolls.surge.sh/" },
+                { text: "Demo", url: "https://alex-jobly.netlify.app/" },
                 { text: "Github frontend", url: "https://github.com/Alex-Linden/react-jobly" },
                 { text: "Github backend", url: "https://github.com/Alex-Linden/express-jobly" }]
         },
